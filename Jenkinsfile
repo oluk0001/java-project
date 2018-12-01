@@ -3,15 +3,12 @@ node('linux'){
     stage('Test'){
         git 'https://github.com/oluk0001/java-project.git'
         sh 'ant -f test.xml -v'
+		junit 'reports/result.xml'
     }
     stage('Build'){
         sh 'ant -f build.xml -v'
     }
-    stage('Results'){
-		sh 'ant -f test.xml -v'
-        junit 'reports/result.xml'
-    }
-	    stage('Report'){
+   	    stage('Report'){
         withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: '276e9e6d-aa56-44c3-98c4-332f143ce90a', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']])
         {
     // some block
