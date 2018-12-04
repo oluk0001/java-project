@@ -9,10 +9,15 @@ node('linux'){
         sh 'ant -f build.xml -v'
     }
    	    stage('Report'){
-        withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: '276e9e6d-aa56-44c3-98c4-332f143ce90a', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']])
-        {
+        withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AKIAJRHI6GTRT522YUFA', credentialsId: '', secretKeyVariable: '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']])
+	{
     // some block
         sh 'aws cloudformation describe-stack-resources --stack-name jenkins --region us-east-1'
         }
     }
+}
+
+
+ {
+    // some block
 }
