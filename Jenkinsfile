@@ -16,7 +16,7 @@ node('linux'){
         }
  stage('Deploy') 
   {
-sh "aws s3 cp $OUTPUT/target/foo-bar.jar s3://seis66510assign/${env.BRANCH_NAME}/"
+sh ("aws s3 cp $WORKSPACE s3://seis66510assign/${JOB_NAME}/${BUILD_NUMBER}/ --recursive --exclude '*' --include '*.jar'")
 	}
     }
 }
