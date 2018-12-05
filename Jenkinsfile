@@ -8,7 +8,7 @@ node('linux'){
     stage('Build'){
         sh 'ant -f build.xml -v'
     }
-   	    stage('Report'){
+   stage('Report'){
         withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AKIAJRHI6GTRT522YUFA', credentialsId: '', secretKeyVariable: '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']])
 	{
     // some block
@@ -18,6 +18,4 @@ node('linux'){
 }
 
 
- {
-    // some block
-}
+
