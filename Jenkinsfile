@@ -14,6 +14,10 @@ node('linux'){
     // some block
         sh 'aws cloudformation describe-stack-resources --stack-name jenkins --region us-east-1'
         }
+ stage('Deploy') 
+  {
+sh "aws s3 cp $OUTPUT/target/foo-bar.jar s3://seis66510assign/${env.BRANCH_NAME}/"
+	}
     }
 }
 
